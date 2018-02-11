@@ -14,7 +14,7 @@ $db = new Database($dbinfo["host"], $dbinfo["dbname"], $dbinfo["username"], $dbi
 
 $cont = new Controller();
 
-$cont->get("/api", function($arr) {
+$cont->get("/api.php", function($arr) {
     global $db;
     if(isset($db)) {
         return $db->getAll();
@@ -23,7 +23,7 @@ $cont->get("/api", function($arr) {
     }
 });
 
-$cont->post("/api", function($arr) {
+$cont->post("/api.php", function($arr) {
     $title;
     $content;
     
@@ -34,10 +34,14 @@ $cont->post("/api", function($arr) {
         $content = $arr["_params"]["title"];
     }
 
-    return "making new task: \"$title\" -- \"$content\"";
+    if(isset($title) && isset($content)) {
+        global $db;
+        return $db->add($title, $content);
+    }
+    header("HTTP/1.1 400 Bad Request");
 });
 
-$cont->put("/api/{id}", function($arr) {
+$cont->put("/api.php/{id}", function($arr) {
     $title;
     $content;
     
@@ -50,11 +54,19 @@ $cont->put("/api/{id}", function($arr) {
         $content = $arr["_params"]["content"];
     }
 
-    return "updated task " . $arr["id"] . " with title $title and content $content";
+    if(isset($title) && isset($content)) {
+        global $db;
+        return $db->update($arr["id"], $title, $content);
+    }
+    header("HTTP/1.1 400 Bad Request");
 });
 
-$cont->delete("/api/{id}", function($arr) {
-    return "deleting post $id";
+$cont->delete("/api.php/{id}", function($arr) {
+    if($arr["id"] > 0) {
+        global $db;
+        return $db->delete($arr["id"]);
+    }
+    header("HTTP/1.1 400 Bad Request");
 });
 
 ?>
