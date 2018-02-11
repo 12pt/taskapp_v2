@@ -1,0 +1,3 @@
+* Taskapp_v2
+
+Exactly the same as [[https://github.com/12pt/taskapp][taskapp]], except this uses our own [[https://github.com/12pt/pirouette][Pirouette]]'s routing capability to clean up the API entrypoint.
