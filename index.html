@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Taskapp</title>
+        <link href="static/normalize.css" rel="stylesheet">
+        <link href="static/style.css" rel="stylesheet">
+        <script src="static/ajax.js"></script>
+        <script src="static/error.js"></script>
+        <script src="static/main.js"></script>
+    </head>
+    <body>
+        <p id="nojs">Please enable JavaScript in your browser.</p>
+
+        <main>
+            <header>
+                <h1>Taskapp</h1>
+            </header>
+
+            <div id="input">
+                <label>Title
+                    <input id="titleInput" type="text" value="New Task"/>
+                </label>
+                <label>Content
+                    <input id="contentInput" type="text" placeholder="Description of your task"/>
+                </label>
+
+                <input id="magicButton" type="button" value="Add" />
+            </div>
+
+            <div id="warning">
+                <p>An error occured when trying to load your tasks. Are you connected to the database?</p>
+            </div>
+
+            <div id="tasklist"></div>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+main {
+    width: 800px;
+    margin: 0 auto;
+    color: #444;
+}
+
+#input {
+    background-color: #e3e3e3;
+    padding: 5px;
+}
+#input > * {
+    margin: 5px;
+}
+#input label {
+    font-weight: bold;
+    display: block;
+}
+#input input {
+    display: block;
+    box-sizing: border-box;
+    border: 1px solid #c3c3c3;
+    padding: 5px;
+    margin-top: 5px;
+}
+#input input[type=text] {
+    width: 100%;
+}
+#input input[type=button] {
+    margin-left: auto;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#tasklist {
+    margin: 10px auto;
+    background-color: #e3e3e3;
+}
+#tasklist input {
+    border: 1px solid grey;
+    padding: 5px;
+    margin-right: 5px;
+}
+#tasklist .task {
+    padding: 10px;
+}
+#tasklist .task:nth-child(even) {
+    background-color: #efefef;
+}
